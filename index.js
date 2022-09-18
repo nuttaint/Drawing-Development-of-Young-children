@@ -3,7 +3,8 @@ const $touches = document.querySelectorAll('#touches')[0]
 const canvas = document.querySelectorAll('canvas')[0]
 const context = canvas.getContext('2d')
 
-const timestamp = Date.now()
+const array = Array();
+var x = 0;
 
 let lineWidth = 0
 let isMousedown = false
@@ -121,8 +122,10 @@ for (const ev of ['touchmove', 'mousemove']) {
       $force.textContent = 'force = ' + pressure
       document.getElementById("timestamp").innerHTML = 'Timestamp = ' + Date.now();
 
+
       const touch = e.touches ? e.touches[0] : null
       if (touch) {
+
         $touches.innerHTML = `
           touchType = ${touch.touchType} ${touch.touchType === 'direct' ? '👆' : '✍️'} <br/>
           radiusX = ${touch.radiusX} <br/>
@@ -132,6 +135,19 @@ for (const ev of ['touchmove', 'mousemove']) {
           azimuthAngle = ${touch.azimuthAngle} <br/>
           
         `
+        array[x] = document.getElementById(Date.now()).value;
+        x++;
+        document.getElementById(Date.now()).value = "";
+
+
+        function display_array() {
+          var h = "<hr/>";
+
+          for (var y = 0; y < array.length; y++) {
+            e += "Element " + y + " = " + array[y] + "<br/>";
+          }
+          document.getElementById("result").innerHTML = h;
+        }
       }
     })
   })
