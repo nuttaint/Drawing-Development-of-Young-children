@@ -2,6 +2,9 @@ const $force = document.querySelectorAll('#force')[0]
 const $touches = document.querySelectorAll('#touches')[0]
 const canvas = document.querySelectorAll('canvas')[0]
 const context = canvas.getContext('2d')
+
+const timestamp = Date.now()
+
 let lineWidth = 0
 let isMousedown = false
 let points = []
@@ -18,7 +21,7 @@ const requestIdleCallback = window.requestIdleCallback || function (fn) { setTim
  * @param {array} stroke array of points to draw on the canvas
  * @return {void}
  */
-function drawOnCanvas (stroke) {
+function drawOnCanvas(stroke) {
   context.strokeStyle = 'black'
   context.lineCap = 'round'
   context.lineJoin = 'round'
@@ -46,7 +49,7 @@ function drawOnCanvas (stroke) {
  * Remove the previous stroke from history and repaint the entire canvas based on history
  * @return {void}
  */
-function undoDraw () {
+function undoDraw() {
   strokeHistory.pop()
   context.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -116,6 +119,7 @@ for (const ev of ['touchmove', 'mousemove']) {
 
     requestIdleCallback(() => {
       $force.textContent = 'force = ' + pressure
+      document.getElementById("timestamp").innerHTML = 'Timestamp = ' + Date.now();
 
       const touch = e.touches ? e.touches[0] : null
       if (touch) {
@@ -126,6 +130,7 @@ for (const ev of ['touchmove', 'mousemove']) {
           rotationAngle = ${touch.rotationAngle} <br/>
           altitudeAngle = ${touch.altitudeAngle} <br/>
           azimuthAngle = ${touch.azimuthAngle} <br/>
+          
         `
       }
     })
@@ -151,7 +156,7 @@ for (const ev of ['touchend', 'touchleave', 'mouseup']) {
 
     isMousedown = false
 
-    requestIdleCallback(function () { strokeHistory.push([...points]); points = []})
+    requestIdleCallback(function () { strokeHistory.push([...points]); points = [] })
 
     lineWidth = 0
   })
