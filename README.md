@@ -1,4 +1,4 @@
-![Screenshot](demo.jpg)
+
 
 3D Touch / Force Touch API Demo
 
@@ -9,7 +9,7 @@ A canvas demo featuring:
 
 In vanilla JS. Tested in Safari & Google Chrome on iOS 9.3.
 
-[Demo](http://shuding.github.io/apple-pencil-safari-api-test) | [Code](https://github.com/shuding/apple-pencil-safari-api-test/blob/gh-pages/index.html).
+[Demo](http://DrawingDevelopment.github.io/apple-pencil-safari-api-test)
 
 __Help me test on Android/Windows/macOS devices and leave an issue please!__
 
@@ -25,7 +25,6 @@ __Help me test on Android/Windows/macOS devices and leave an issue please!__
 
 To visualize `altitudeAngle` and `azimuthAngle` (source: [Apple](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/illustrating_the_force_altitude_and_azimuth_properties_of_touch_input)):
 
-![Apple Pencil](apple-pencil.png)
 
 ## Related Resources
 
